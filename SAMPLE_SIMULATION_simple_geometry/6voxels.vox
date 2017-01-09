@@ -1,0 +1,25 @@
+# >>>> PenEasy 2008 VOXEL GEOMETRY FILE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#
+#   Simple geometry with 9 voxels with 2 materials and 3 different densities.
+#   The format of this voxel geometry is compatible with penEasy 2008 and
+#   with MC-GPU v.1.1.
+#   The voxels are listed with the X index changing first, then the Y index and
+#   the Z index last. Blank lines can be optionally inserted to separate the
+#   each X column for different Y, and double blanks to separate XY blocks.
+#
+[SECTION VOXELS HEADER v.2008-04-13]
+  3     1     2     No. OF VOXELS IN X,Y,Z
+ 10.0  10.0 15.0   VOXEL SIZE (cm) ALONG X,Y,Z
+ 1                  COLUMN NUMBER WHERE MATERIAL ID IS LOCATED
+ 2                  COLUMN NUMBER WHERE THE MASS DENSITY IS LOCATED
+ 1                  BLANK LINES AT END OF X,Y-CYCLES (1=YES,0=NO)
+[END OF VXH SECTION]
+1 1.50
+1 1.00
+1 0.50
+
+
+2 1.50
+2 1.00
+2 0.50
+

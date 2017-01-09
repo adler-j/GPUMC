@@ -1,0 +1,87 @@
+
+# Conversion table to convert the Zubal body phantom to the MC-GPU/penEasy voxel format:
+
+# SECTION VOXELS HEADER
+128 128 243     No. OF VOXELS IN X,Y,Z
+0.4 0.4 0.4     VOXEL SIZE (cm) ALONG X,Y,Z
+
+
+# ORGAN_ID  ORGAN_NAME           MC_MATERIAL   DENSITY [g/cm3]
+0           outside_phantom           1        0.001205   
+1           skin                      8        1.000 
+2           brain                    11        1.039 
+3           spinal_cord               3        1.038  
+4           skull                     4        1.990
+5           spine                     4        1.990  
+6           ribs_sternum              4        1.990  
+7           pelvis                    4        1.990
+8           long_bones                4        1.990 
+9           skeletal_muscle           2        1.041    
+10          lungs                     9        0.655
+11          heart                     2        1.041         
+12          liver                    13        1.050 
+13          gall_bladder              3        1.026   
+14          kidney                    3        1.049    
+15          pharynx                   1        0.001205
+16          esophagus                14        1.050    
+17          stomach                  14        1.050    
+18          small_bowel              14        1.050
+19          colon                    14        1.050    
+20          pancreas                  3        1.045     
+21          adrenals                 10        1.025
+22          fat                       6        0.916
+23          blood_pool                7        1.060
+24          gas_bowel                 1        0.001205
+25          fluid_bowel              15        1.000
+26          bone_marrow              12        1.027
+27          lymph_nodes              10        1.050
+28          thyroid                  10        1.050
+29          trachea                   5        1.100
+30          cartilage                 5        1.100
+31          spleen                    3        1.054
+32          urine                    15        1.000
+33          feces                    15        1.000
+34          testes                    3        1.044
+35          prostate                  3        1.045
+37          rectum                   14        1.050
+39          diaphragm                 2        1.041
+40          bladder                  15        1.040
+63          lesion                    2        1.100
+70          dens_of_axis              3        1.0 
+71          jaw_bone                  4        1.990
+74          lachrymal_glands         10        1.050  
+75          spinal_canal              4        1.990      
+76          hard_palate               4        1.990     
+77          cerebellum               11        1.040
+78          tongue                    2        1.041  
+85          medulla_oblongata        11        1.039
+91          pons                     11        1.039
+99          uncus_ear_bones           4        1.990
+104         sinuses_mouth_cavity      1        0.001205 
+106         optic_nerve               3        1.038
+113         cerebral_falx            11        1.1
+119         eye                      15        1.009
+121         lens                      3        1.090      
+122         cerebral_aqueduct        15        1.0
+125         teeth                     4        1.990
+                                     
+
+#[Monte Carlo material ID's, 2009-04-24]
+  1    Air
+  2    Muscle
+  3    Soft tissue (organs)
+  4    Cortical bone
+  5    Cartilage
+  6    Fat (Adipose)
+  7    blood
+  8    Skin
+  9    Lung
+  10   Glandular
+  11   Brain (average ICRP, penelope)
+  12   Bone red marrow
+  13   Liver
+  14   Stomach
+  15   water
+ 
+
+  

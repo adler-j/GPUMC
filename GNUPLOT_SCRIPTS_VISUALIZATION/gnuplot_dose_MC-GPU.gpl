@@ -1,0 +1,40 @@
+#!/usr/bin/gnuplot 
+
+# -- Represent the 3D dose deposition matrix simulated with MC-GPU:
+#    The name of the data file must be "mc-gpu_dose.dat".
+#     To use log scale I can calculate "-log10($1)" or press "l" after clicking the graphic.
+
+#set yrange[0: 349]
+#set xrange[0:1299]
+#set zrange[0:0.3]
+#set cbrange[0:0.3]
+
+set size ratio -1
+# Determine voxel color from corner left-bottom:
+set pm3d map corners2color c1
+#set palette gray negative
+
+
+# set xlabel "X (pixel)"
+# set ylabel "Z (pixel)"
+
+set title "Simulated dose map [eV/g per x-ray]"
+splot "mc-gpu_dose.dat" using 1 index 000 notitle
+#pause -1 "  --Press enter for next image..."
+
+pause -1 "  --Press enter to save image in PNG format and exit... "
+
+
+#########################
+#  OUTPUT png IMAGES:
+
+#set autoscale
+
+set terminal png large size 1024,1024 crop
+# set terminal postscript eps
+
+set output 'mc-gpu_dose.png'
+splot "mc-gpu_dose.dat" using 1 index 000 notitle
+
+pause 0.1 "  --Done! "
+ 

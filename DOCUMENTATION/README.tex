@@ -1,0 +1,39 @@
+
+% - Simple LaTeX file that generates an abrided version of refman.pdf that can 
+%   be used as a simple "READ ME" file by the user. (File based on "refman.tex").
+%   The file "index.tex" must exist in a subfolder called "latex"
+
+\documentclass[letterpaper]{report}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage[titles]{tocloft}
+\usepackage{latex/doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=8,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\hfuzz=15pt
+\setlength{\emergencystretch}{15pt}
+\hbadness=750
+\tolerance=750
+\begin{document}
+
+\pagenumbering{arabic}
+\chapter{\-M\-C-\/\-G\-P\-U v1.3}
+\label{index}\input{latex/index}
+\end{document}

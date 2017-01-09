@@ -1,0 +1,135 @@
+#!/usr/bin/gnuplot 
+
+# -- Plot a gray scale 2D image with a single Y bin:
+#
+# Based on a gnuplot script file for penEasy
+# Last update:
+#   2008-12-05 by ABS (include scatter images)
+#   2006-12-11 by AB
+#   2005-08-01 by JS
+
+
+# set yrange[0:124]
+# set xrange[0:649]
+# set zrange[0:0.3]
+# set cbrange[-1.5:3] 
+
+set size ratio -1
+
+# Determine voxel color from corner left-bottom:
+set pm3d map corners2color c1
+
+# In case you want a gray scale plot:
+set palette gray negative
+
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0000" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0001" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0002" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0003" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0004" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0005" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0006" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0007" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0008" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0009" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0010" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+splot "mc-gpu_image.dat_0011" using ($1+$2+$3+$4) notitle
+pause -1 "  --Press enter for next image..."
+
+
+
+
+# To use log scale I can calculate "-log10($1)"
+
+# set xlabel "X (pixel)"
+# set ylabel "Z (pixel)"
+
+# set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using ($1+$2+$3+$4) notitle
+# pause -1 "  --Press enter for next image..."
+# 
+# set title "Simulated image: NON-SCATTERED particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 1 notitle
+# pause -1 "  --Press enter for next image..."
+# 
+# set title "Simulated image: COMPTON particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 2 notitle
+# pause -1 "  --Press enter for next image..."
+# 
+# set title "Simulated image: RAYLEIGH particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 3 notitle
+# pause -1 "  --Press enter for next image..."
+# 
+# set title "Simulated image: MULTIPLE-SCATTERED particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 4 notitle
+# 
+# 
+# pause -1 "  --Press enter to save images in PNG format and exit... "
+# 
+# 
+# #########################
+# #  OUTPUT png IMAGES:
+# 
+# #set autoscale
+# 
+# set terminal png large size 2000,1000 crop
+# # set terminal postscript eps
+# 
+# set output 'mc-gpu_image.png'
+# set title "Simulated image: ALL particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using ($1+$2+$3+$4) notitle
+# 
+# set output 'mc-gpu_image_NonScattered.png'
+# set title "Simulated image: NON-SCATTERED particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 1 notitle
+# 
+# set output 'mc-gpu_image_Compton.png'
+# set title "Simulated image: COMPTON particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 2 notitle
+# 
+# set output 'mc-gpu_image_Rayleigh.png'
+# set title "Simulated image: RAYLEIGH particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 3 notitle
+# 
+# set output 'mc-gpu_image_MultipleScatter.png'
+# set title "Simulated image: MULTIPLE-SCATTERED particles [eV/cm^2 per x-ray]"
+# splot "mc-gpu_image.dat" using 4 notitle
+# 
+# pause 0.1 "  --Done! "
+#  

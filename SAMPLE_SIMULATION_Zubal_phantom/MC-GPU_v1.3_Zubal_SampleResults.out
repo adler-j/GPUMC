@@ -1,0 +1,270 @@
+          >> MPI run (myId=0, numprocs=1) on processor "fermi" (time: 20:10:59) <<
+              -- Time spent initializing the MPI world (MPI_Barrier): 0.010 s
+
+
+     *****************************************************************************
+     ***         MC-GPU, version 1.3 (http://code.google.com/p/mcgpu/)         ***
+     ***                                                                       ***
+     ***  A. Badal and A. Badano, "Accelerating Monte Carlo simulations of     *** 
+     ***  photon transport in a voxelized geometry using a massively parallel  *** 
+     ***  Graphics Processing Unit", Medical Physics 36, pp. 4878–4880 (2009)  ***
+     ***                                                                       ***
+     ***                     Andreu Badal (Andreu.Badal-Soler@fda.hhs.gov)     ***
+     *****************************************************************************
+
+****** Code execution started on: Fri Dec 14 20:10:59 2012
+
+
+
+             *** CUDA SIMULATION IN THE GPU ***
+
+    -- INITIALIZATION phase:
+
+    -- Reading the input file 'MC-GPU_v1.3_Zubal.in':
+       Material dose deposition tally ENABLED.
+       3D voxel dose deposition tally ENABLED.
+
+       Rotations from the input direction to +Y [deg]: rotZ = -0.000003 , rotX = 0.000003
+       Rotations from +Y to the input direction for the fan beam source model [deg]: rotZ = 0.000003 , rotX = -0.000003
+       Array for 4 scatter images correctly allocated (87500 pixels, 2.670288 Mbytes)
+       Array for the deposited dose ROI (and uncertainty) correctly allocated (3981312 voxels, 60.750000 Mbytes)
+    -- Reading the energy spectrum and initializing the Walker aliasing sampling algorithm.
+              x-ray tracks to simulate = 100000000
+                   initial random seed = 1234567890
+      azimuthal (phi), polar apertures = 42.501013 , 31.048223 degrees
+                   focal spot position = (25.600000, -37.000000, 65.000000)
+                      source direction = (0.000000, 1.000000, 0.000000)
+                  initial angle from X = 270.000000
+              source-detector distance = 90.000000 cm
+                       detector center = (25.600000, 53.000000, 65.000000)
+           detector low corner (at +Y) = (-9.399998, 52.999996, 40.000000)
+                number of pixels image = 350x250 = 87500
+                            pixel size = 0.200x0.200 cm
+                 number of projections = 3
+         source-rotation axis-distance = 60.000000 cm
+             angle between projections = 45.000000
+            angular region of interest = [-0.000010,5000.000010] degrees
+   vertical translation per projection = 0.000000 cm
+                      Input voxel file = Zubal_voxel_man.vox.gz
+                     Output image file = mc-gpu_image.dat
+                      Output dose file = mc-gpu_dose.dat
+         Input region of interest dose = X[1,128], Y[1,128], Z[1,243]
+
+                  Energy spectrum file = ../90kVp_4.0mmAl.spc
+            number of energy bins read = 150
+             minimum, maximum energies = 15.000, 90.000 keV
+                  mean energy spectrum = 49.495 keV
+
+
+    -- Setting the sources and detectors for the 3 CT projections (MAX_NUM_PROJECTIONS=720):
+         << Projection #1 >> initial_angle=270.00000000 , D_angle=45.00000000
+                             Source direction=(0.00000000,1.00000000,0.00000000), position=(25.60000038,-37.00000000,65.00000000)
+         << Projection #2 >> current_angle=315.00000000 degrees (rotation around Z axis = -45.00000034)
+                             Source direction = (-0.70710677,0.70710677,0.00000000) , position = (68.02640533,-19.42640686,65.00000000)
+         << Projection #3 >> current_angle=0.00000000 degrees (rotation around Z axis = -90.00000501)
+                             Source direction = (-1.00000000,0.00000000,0.00000000) , position = (85.59999847,23.00000000,65.00000000)
+
+    -- Reading voxel file 'Zubal_voxel_man.vox.gz':
+       Number of voxels in the input geometry file: 128 x 128 x 243 =  3981312
+       Size of the input voxels: 0.400000 x 0.400000 x 0.400000 cm  (voxel volume=0.064000 cm^3)
+       Voxel bounding box size: 51.200001 x 51.200001 x 97.200005 cm
+       The voxel dose tally ROI covers the entire voxelized phantom: the dose to every voxel will be tallied.
+
+    -- Initializing the voxel material and density vector (30.375000 Mbytes)...
+       Total number of voxels read: 3981312
+       Total CPU memory allocated for voxels vector and data structures = 34.514496 Mbytes
+
+    -- Reading the material data files (MAX_MATERIALS=15):
+         Mat 1: File '../MC-GPU_material_files/air__5-120keV.mcgpu'
+                Nominal density = 0.001205 g/cm^3; Max density in voxels = 0.001200 g/cm^3
+                Number of energy values in the mean free path database: 23001.
+                Linear interpolation data correctly allocated (8.072250 Mbytes)
+                Lowest energy first bin = 5000.000000 eV, last bin = 120000.000000 eV; bin width = 5.000000 eV
+         Mat 2: File '../MC-GPU_material_files/muscle_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.050000 g/cm^3; Max density in voxels = 1.100000 g/cm^3
+         Mat 3: File '../MC-GPU_material_files/soft_tissue_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.000000 g/cm^3; Max density in voxels = 1.090000 g/cm^3
+         Mat 4: File '../MC-GPU_material_files/bone_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.920000 g/cm^3; Max density in voxels = 1.990000 g/cm^3
+         Mat 5: File '../MC-GPU_material_files/cartilage_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.100000 g/cm^3; Max density in voxels = 1.100000 g/cm^3
+         Mat 6: File '../MC-GPU_material_files/adipose_ICRP110__5-120keV.mcgpu'
+                Nominal density = 0.950000 g/cm^3; Max density in voxels = 0.916000 g/cm^3
+         Mat 7: File '../MC-GPU_material_files/blood_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.060000 g/cm^3; Max density in voxels = 1.060000 g/cm^3
+         Mat 8: File '../MC-GPU_material_files/skin_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.090000 g/cm^3; Max density in voxels = 1.100000 g/cm^3
+         Mat 9: File '../MC-GPU_material_files/lung_ICRP110__5-120keV.mcgpu'
+                Nominal density = 0.382000 g/cm^3; Max density in voxels = 0.655000 g/cm^3
+         Mat 10: File '../MC-GPU_material_files/glands_others_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.030000 g/cm^3; Max density in voxels = 1.050000 g/cm^3
+         Mat 11: File '../MC-GPU_material_files/brain_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.050000 g/cm^3; Max density in voxels = 1.100000 g/cm^3
+         Mat 12: File '../MC-GPU_material_files/red_marrow_Woodard__5-120keV.mcgpu'
+                Nominal density = 1.030000 g/cm^3; Max density in voxels = 1.027000 g/cm^3
+         Mat 13: File '../MC-GPU_material_files/liver_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.050000 g/cm^3; Max density in voxels = 1.050000 g/cm^3
+         Mat 14: File '../MC-GPU_material_files/stomach_intestines_ICRP110__5-120keV.mcgpu'
+                Nominal density = 1.040000 g/cm^3; Max density in voxels = 1.050000 g/cm^3
+         Mat 15: File '../MC-GPU_material_files/water__5-120keV.mcgpu'
+                Nominal density = 1.000000 g/cm^3; Max density in voxels = 1.040000 g/cm^3
+
+       ==> CUDA (MPI process #0): 4 CUDA enabled GPU detected! Using device #0: "GeForce GTX 680"
+                 Compute capability: 3.0, Number multiprocessors: 8, Number cores: 1536
+                 Clock rate: 1.08 GHz, Global memory: 4095.812 Mbyte, Constant memory: 64.00 kbyte
+                 Shared memory per block: 48.00 kbyte, Registers per block: 64.00 kbyte
+                 CUDA Driver Version: 5.0, Runtime Version: 5.0
+       ==> CUDA: Constant data successfully copied to the device. CONSTANT memory used: 0.246094 kbytes (0.4%)
+       ==> CUDA: Device global memory correctly allocated. GLOBAL memory used: 103.337021 Mbytes (2.5%)
+       ==> CUDA: Launching kernel to initialize the device image to 0: number of blocks = 684, threads per block = 128
+       ==> CUDA: Initialize the device dose deposition to 0 using cudaMemcpy.
+                 Time spent allocating and copying memory to the device: 0.090000 s
+
+    -- INITIALIZATION finished: elapsed time = 5.240 s. 
+
+
+
+    -- MONTE CARLO LOOP phase. Time: Fri Dec 14 20:11:04 2012
+
+
+
+
+
+   << Simulating Projection 1 of 3 >> Angle: 270.000000 degrees.
+
+
+
+
+        ==> CUDA (MPI process #0 in "fermi"): Executing 5209 blocks of 128 threads, with 150 histories in each thread: 100012800 histories in total (random seed: 1234567890).
+
+
+          *** IMAGE TALLY PERFORMANCE REPORT ***
+              CT projection 1 of 3: angle from X axis = 270.000000 
+              Simulated x rays:    100012800
+              Simulation time [s]: 9.25
+              Speed [x-rays/s]:    10812194.59
+
+              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  15.495%
+              Maximum energy detected in pixel 78862: (x,y)=(112,225). Maximum pixel value = 15.735924 eV/cm^2
+
+       ==> CUDA: Launching kernel to reset the device image to 0: number of blocks = 684, threads per block = 128
+
+
+
+   << Simulating Projection 2 of 3 >> Angle: 315.000000 degrees.
+
+
+
+
+        ==> CUDA (MPI process #0 in "fermi"): Executing 5209 blocks of 128 threads, with 150 histories in each thread: 100012800 histories in total (random seed: 248107525).
+
+
+          *** IMAGE TALLY PERFORMANCE REPORT ***
+              CT projection 2 of 3: angle from X axis = 315.000000 
+              Simulated x rays:    100012800
+              Simulation time [s]: 9.08
+              Speed [x-rays/s]:    11014625.55
+
+              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  23.172%
+              Maximum energy detected in pixel 53614: (x,y)=(64,153). Maximum pixel value = 15.856305 eV/cm^2
+
+       ==> CUDA: Launching kernel to reset the device image to 0: number of blocks = 684, threads per block = 128
+
+
+
+   << Simulating Projection 3 of 3 >> Angle: 360.000000 degrees.
+
+
+
+
+        ==> CUDA (MPI process #0 in "fermi"): Executing 5209 blocks of 128 threads, with 150 histories in each thread: 100012800 histories in total (random seed: 954211980).
+
+
+          *** IMAGE TALLY PERFORMANCE REPORT ***
+              CT projection 3 of 3: angle from X axis = 360.000000 
+              Simulated x rays:    100012800
+              Simulation time [s]: 8.65
+              Speed [x-rays/s]:    11562173.41
+
+              Fraction of initial energy arriving at the detector (over the mean energy of the spectrum):  41.622%
+              Maximum energy detected in pixel 58529: (x,y)=(79,167). Maximum pixel value = 16.486520 eV/cm^2
+
+       ==> CUDA: Time copying dose results from device to host: 0.010000 s
+       ==> CUDA: Time freeing the device memory and ending the GPU threads: 0.030000 s
+        >> MPI thread 0 in "fermi" done! (local time: 20:11:32)
+
+
+          *** VOXEL ROI DOSE TALLY REPORT ***
+
+              Reporting the 3D voxel dose distribution as binary floats in the .raw file, and the 2D dose for Z plane 162 as ASCII text.
+
+              Total energy absorved inside the dose deposition ROI: 25.35557 keV/hist
+              Maximum voxel dose (+-2 sigma): 19.533687 +- 0.005118 eV/g per history (E_dep_voxel=0.001500 eV/hist)
+              for the voxel: material=1, density=0.00120000 g/cm^3, voxel_mass=0.00007680 g, voxel coord in geometry=(112,47,177)
+
+              Dose deposited in the different materials inside the input ROI computed post-processing the 3D voxel dose results:
+
+    [MATERIAL]  [DOSE_ROI, eV/g/hist]  [2*std_dev]  [Rel error 2*std_dev, %]  [E_dep [eV/hist]  [MASS_ROI, g]  [NUM_VOXELS_ROI]
+   =============================================================================================================================
+	1	0.35025		0.00080		0.23		80.55		229.97446	2994459
+	2	0.29443		0.00006		0.02		7331.42		24900.44430	373694
+	3	0.10223		0.00018		0.18		137.70		1346.88603	20093
+	4	0.79005		0.00019		0.02		8273.44		10472.04869	82224
+	5	0.54929		0.00137		0.25		71.66		130.45120	1853
+	6	0.07502		0.00097		1.29		2.19		29.25338	499
+	7	0.32442		0.00035		0.11		376.20		1159.58906	17093
+	8	0.33815		0.00007		0.02		6987.32		20663.17485	293511
+	9	0.49945		0.00028		0.06		1305.93		2614.71797	62374
+	10	0.56993		0.00464		0.81		6.34		11.12320	167
+	11	0.01384		0.00007		0.47		19.65		1419.98295	21340
+	12	0.09771		0.00017		0.17		135.55		1387.32083	21107
+	13	0.19037		0.00020		0.11		374.53		1967.41431	29277
+	14	0.07175		0.00009		0.13		250.59		3492.58544	51973
+	15	0.00332		0.00004		1.31		2.51		753.66770	11648
+
+
+
+          *** MATERIALS TOTAL DOSE TALLY REPORT ***
+
+              Dose deposited in each material defined in the input file (tallied directly per material, not per voxel):
+              The results of this tally should be equal to the voxel tally doses for an ROI covering all voxels.
+
+    [MAT]  [DOSE, eV/g/hist]  [2*std_dev]  [Rel_error 2*std_dev, %]  [E_dep [eV/hist]  [MASS_TOTAL, g]
+   ====================================================================================================
+	1	0.35025		0.00080		0.23		80.55		229.97446
+	2	0.29443		0.00006		0.02		7331.42		24900.44430
+	3	0.10223		0.00018		0.18		137.70		1346.88603
+	4	0.79005		0.00019		0.02		8273.44		10472.04869
+	5	0.54929		0.00137		0.25		71.66		130.45120
+	6	0.07502		0.00097		1.29		2.19		29.25338
+	7	0.32442		0.00035		0.11		376.20		1159.58906
+	8	0.33815		0.00007		0.02		6987.32		20663.17485
+	9	0.49945		0.00028		0.06		1305.93		2614.71797
+	10	0.56993		0.00464		0.81		6.34		11.12320
+	11	0.01384		0.00007		0.47		19.65		1419.98295
+	12	0.09771		0.00017		0.17		135.55		1387.32083
+	13	0.19037		0.00020		0.11		374.53		1967.41431
+	14	0.07175		0.00009		0.13		250.59		3492.58544
+	15	0.00332		0.00004		1.31		2.51		753.66770
+
+
+       ==> CUDA: Time reporting the dose data: 0.320000 s
+
+
+
+    -- SIMULATION FINISHED!
+
+
+       ****** TOTAL SIMULATION PERFORMANCE (including initialization and reporting) ******
+
+          >>> Execution time including initialization, transport and report: 32.980 s.
+          >>> Time spent in the Monte Carlo transport only: 26.980 s.
+          >>> Time spent in initialization, reporting and clean up: 6.000 s.
+
+          >>> Total number of simulated x rays:  300038400
+          >>> Total speed (using 1 thread, including initialization time) [x-rays/s]:  9097586.42
+
+
+****** Code execution finished on: Fri Dec 14 20:11:32 2012
+
+
